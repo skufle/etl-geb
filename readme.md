@@ -11,3 +11,5 @@ The following commands will launch the tests with the individual browsers:
 To run with all, you can run:
 
     ./gradlew test
+    
+Se også: http://fbflex.wordpress.com/2013/03/18/how-to-configure-webdriver-in-grails-for-your-geb-tests/
