@@ -1,14 +1,16 @@
-This is an example of incorporating Geb into a Gradle build. It shows the use of Spock and JUnit 4 tests.
+Dette er et eksempel, der viser hvordan tinglysning kunne web testes med Geb, Spock og Gradle.
 
-The build is setup to work with HTMLUnit, FireFox and Chrome. Have a look at the `build.gradle` and the `src/test/resources/GebConfig.groovy` files.
+Bygget er sat op til at virke med FireFox og Chrome (Webdriver Sauce Labs Work in Progress). 
 
-The following commands will launch the tests with the individual browsers:
+Konfiguration:  `build.gradle` og `src/test/resources/GebConfig.groovy` filerne.
 
-    ./gradlew htmlunitTest
+Følgende kommandoer kan bruges til at launche test med specifikke browsere:
+
+    ./gradlew saucelabsTest
     ./gradlew chromeTest
     ./gradlew firefoxTest
 
-To run with all, you can run:
+Testene kan afvikles på samtlige understøttede browsere med:
 
     ./gradlew test
     
