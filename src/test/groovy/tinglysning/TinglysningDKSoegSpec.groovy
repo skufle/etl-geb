@@ -1,7 +1,6 @@
-import spock.lang.*
-import geb.*
-import geb.spock.*
-import org.openqa.selenium.Keys
+package tinglysning
+
+import geb.spock.GebReportingSpec
 
 class TinglysningDKSoegSpec extends GebReportingSpec {
 
