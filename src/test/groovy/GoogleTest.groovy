@@ -5,7 +5,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-/*
+/* test
 @RunWith(JUnit4)
 class GoogleTest extends GebReportingTest {
 
