@@ -22,9 +22,10 @@ Hvis du ønsker at afvikle testen mod Sauce Labs kræver det en valid konto og p
  `GEB_SAUCE_LABS_ACCESS_PASSWORD=password`
 
 Se også:
+*  Spock (Domæne specifikt sprog til at skrive tests i) http://code.google.com/p/spock/
+*  Geb (Automatiseret browser drevet test) http://www.gebish.org/
+*  Gradle (Bygge-værktøj som Ant og Maven men med eget domæne specifikt sprog) http://www.gradle.org/
+*  Sauce Labs (Test i skyen, understøtter også browser og os platforme, som vi evt. ikke har til rådighed f.eks. Macs, Linux, iOS, Android etc.) http://saucelabs.com
 
-  Spock (Domæne specifik sprog til at skrive tests i) http://code.google.com/p/spock/
-  Geb (Automatiseret browser drevet test) http://www.gebish.org/
-  Gradle (Bygge-værktøj, tror allerede Ødum kigger lidt på det til at erstatte vores byg af kode) http://www.gradle.org/
-  Sauce Labs (Test i skyen, understøtter også browser og os platforme, som vi ikke har til rådighed f.eks. Macs, Linux, iOS etc.) http://saucelabs.com
-  http://fbflex.wordpress.com/2013/03/18/how-to-configure-webdriver-in-grails-for-your-geb-tests/
+Bogmærker:
+*  http://fbflex.wordpress.com/2013/03/18/how-to-configure-webdriver-in-grails-for-your-geb-tests/
