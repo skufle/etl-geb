@@ -13,7 +13,7 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
         expect: "Jeg er på startsiden"
         at TinglysningStartSide
 
-        when:
+        when: "Når vi clicker på forespørg"
         forespoerglink.click()
 
         then:
@@ -23,29 +23,29 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
         forespoergTingbogenLink.click()
 
         then:
-        waitFor {at ForespoergselTingbogenSide}
+        waitFor {at ForespoergselTingbogenSide} // Lidt mere tålmodig...
 
-        when:
+        when: "Vi indtaster postnummmer"
         postnummer.value("3500")
 
-        and:
-        waitFor {postdistrikt.text() == "Værløse"}
+        then: "Vi venter på asynkront svar med postdistrikt (by) "
+        waitFor {postdistrikt.text() == "Værløse"} // Vent på Ajax request...
 
-        and:
-        {
+        when:
+        { "Det er da her han bor!"
             vejkode.value("Mosevej")
             husnr.value("16")
         }
 
-        and:
+//        then:
+//        soeg.click();
 
         /*
-          // Måske kan modifiers hives ud via Webdriver configuration objektet,
-          // da de varierer fra platform til platform og fra browser til browser.
+          // Måske kan modifiers hives ud via Webdriver configuration objektet.
+          // De varierer fra platform til platform og fra browser til browser, bruger til bruger...
           Keys.chord(Keys.CONTROL, Keys.ALT, "s");
          */
-        // Keys.chord(Keys.CONTROL, Keys.ALT, "s"); // Måske kan modifiers hives ud via Webdriver configuration objektet,
-        // da de varierer fra platform til platform og fra browser til browser.
+
 
         then:
         at ForespoergselTingbogenSide
