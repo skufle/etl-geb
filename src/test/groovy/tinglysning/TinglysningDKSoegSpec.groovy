@@ -1,15 +1,19 @@
-import spock.lang.*
-import geb.*
-import geb.spock.*
+package tinglysning
+
+import geb.spock.GebReportingSpec
 import org.openqa.selenium.Keys
 
 class TinglysningDKSoegSpec extends GebReportingSpec {
 
-    def "Naviger til Foresp\u00F8rgsel side"() {
-        when:
+    def "Naviger til Foresp\u00F8rgsel side og fremsøg Brians palads"() {
+
+        given: "Naviger til startsiden"
         to TinglysningStartSide
 
-        and:
+        expect: "Jeg er på startsiden"
+        at TinglysningStartSide
+
+        when:
         forespoerglink.click()
 
         then:
@@ -19,16 +23,33 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
         forespoergTingbogenLink.click()
 
         then:
-        at ForespoergselTingbogenSide
+        waitFor {at ForespoergselTingbogenSide}
 
         when:
-        $("form").find("input", name: "content:center:tingbogen:postnummer").value("3500")
+        postnummer.value("3500")
 
-//      and:
-//      Keys.chord(Keys.TAB)
+        and:
+        waitFor {postdistrikt.text() == "Værløse"}
+
+        and:
+        {
+            vejkode.value("Mosevej")
+            husnr.value("16")
+        }
+
+        and:
+
+        /*
+          // Måske kan modifiers hives ud via Webdriver configuration objektet,
+          // da de varierer fra platform til platform og fra browser til browser.
+          Keys.chord(Keys.CONTROL, Keys.ALT, "s");
+         */
+        // Keys.chord(Keys.CONTROL, Keys.ALT, "s"); // Måske kan modifiers hives ud via Webdriver configuration objektet,
+        // da de varierer fra platform til platform og fra browser til browser.
 
         then:
         at ForespoergselTingbogenSide
+
 
 /*
         and:

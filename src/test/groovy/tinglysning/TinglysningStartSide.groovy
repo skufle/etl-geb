@@ -1,3 +1,5 @@
+package tinglysning
+
 import geb.*
 
 class TinglysningStartSide extends Page {
