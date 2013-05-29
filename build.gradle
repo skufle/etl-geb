@@ -17,7 +17,7 @@ dependencies {
     testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
 
     // If using JUnit, need to depend on geb-junit (3 or 4)
-    testCompile "org.gebish:geb-junit4:$gebVersion"
+    // testCompile "org.gebish:geb-junit4:$gebVersion"
 
     // Drivers
     drivers.each { driver ->

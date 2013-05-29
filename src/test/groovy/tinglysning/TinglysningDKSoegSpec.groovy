@@ -5,7 +5,7 @@ import org.openqa.selenium.Keys
 
 class TinglysningDKSoegSpec extends GebReportingSpec {
 
-    def "Naviger til Foresp\u00F8rgsel side og fremsøg Brians palads"() {
+    def "Naviger til Forespoergsel side og fremsoeg Brians palads"() {
 
         given: "Naviger til startsiden"
         to TinglysningStartSide
@@ -13,53 +13,50 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
         expect: "Jeg er på startsiden"
         at TinglysningStartSide
 
-        when: "Når vi clicker på forespørg"
+        when: "Klik på forespørg tab"
         forespoerglink.click()
 
-        then:
-        at ForespoergselSide
+        then: "Jeg er på forespørgselsiden"
+        waitFor {at ForespoergselSide}
 
-        when:
+        when: "Klik på forespørg tingbogen"
         forespoergTingbogenLink.click()
 
-        then:
-        waitFor {at ForespoergselTingbogenSide} // Lidt mere tålmodig...
+        then: "Jeg er på forespørg tingbogen side"
+        waitFor {at ForespoergselTingbogenSide}
 
-        when: "Vi indtaster postnummmer"
+        when: "Indtast postnummer"
         postnummer.value("3500")
 
-        then: "Vi venter på asynkront svar med postdistrikt (by) "
-        waitFor {postdistrikt.text() == "Værløse"} // Vent på Ajax request...
+        and: "Vent på AJAX kaldet oversættes til et postdistrikt"
+        waitFor {postdistrikt.text() == "Værløse"}
 
-        when:
-        { "Det er da her han bor!"
+        and: {
             vejkode.value("Mosevej")
             husnr.value("16")
         }
 
-//        then:
-//        soeg.click();
-
+        and: "Klik på søg"
+        soegLink.click()
         /*
-          // Måske kan modifiers hives ud via Webdriver configuration objektet.
-          // De varierer fra platform til platform og fra browser til browser, bruger til bruger...
+          // Måske kan modifiers hives ud via Webdriver configuration objektet,
+          // da de varierer fra platform til platform og fra browser til browser.
           Keys.chord(Keys.CONTROL, Keys.ALT, "s");
          */
 
+        then: "Vent på resultatet"
+        waitFor {at ForespoergselTingbogenResultaterSide}
 
-        then:
-        at ForespoergselTingbogenSide
+        and: "Forvent een ejendom"
+        ejendomme.size() == 1
 
+        and: "Vedrørende min ejendom"
+        ejendomme[0].vedroerende == "Ll. Værløse By, Værløse, 2fi"
 
-/*
-        and:
-        firstResultLink.text() == "Wikipedia"
+        when: "Klik på Videre"
+        ejendomme[0].videreLink.click()
 
-        when:
-        firstResultLink.click()
-
-        then:
-        waitFor { at WikipediaPage }
-*/
+        then: "Vent på betalingside"
+        waitFor {at BetalingSide}
     }
 }

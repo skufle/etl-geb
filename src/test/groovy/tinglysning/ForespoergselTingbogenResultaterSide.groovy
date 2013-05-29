@@ -1,16 +1,14 @@
 package tinglysning
 
-/**
- * Created with IntelliJ IDEA.
- * User: Brian
- * Date: 29/05/13
- * Time: 00.03
- */
-class ForespoergselTingbogenResultaterSide {
-    static at = { $("h1").next().text() == "Søgeresultater" }
+import geb.*
 
-    static content = {
-        forespoerglink { $("a", text: "Forespørg") }
-    }
+class ForespoergselTingbogenResultaterSide extends Page {
 
+	// Mærkelig kode i tinglysning.dk gør at vi er nødt til bruge .next(), har 2 nestede H1 tags hvor den yderste er tom...
+  static at = { $("h1").next().text() == "Søgeresultater" }
+
+  static content = {
+    // .tail skipper rækken med overskrifter
+    ejendomme {moduleList EjendomRow, $("table.af_table_content tbody tr").tail() }
+  }
 }
