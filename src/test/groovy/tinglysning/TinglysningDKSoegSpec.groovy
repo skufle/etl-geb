@@ -5,7 +5,7 @@ import org.openqa.selenium.Keys
 
 class TinglysningDKSoegSpec extends GebReportingSpec {
 
-    def "Naviger til Foresp\u00F8rgsel side og fremsøg Brians palads"() {
+    def "Naviger til Forespoergsel side og fremsoeg Brians palads"() {
 
         given: "Naviger til startsiden"
         to TinglysningStartSide
@@ -13,53 +13,50 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
         expect: "Jeg er på startsiden"
         at TinglysningStartSide
 
-        when:
+        when: "Klik på forespørg tab"
         forespoerglink.click()
 
-        then:
-        at ForespoergselSide
+        then: "Jeg er på forespørgselsiden"
+        waitFor {at ForespoergselSide}
 
-        when:
+        when: "Klik på forespørg tingbogen"
         forespoergTingbogenLink.click()
 
-        then:
+        then: "Jeg er på forespørg tingbogen side"
         waitFor {at ForespoergselTingbogenSide}
 
-        when:
+        when: "Indtast postnummer"
         postnummer.value("3500")
 
-        and:
+        and: "Vent på AJAX kaldet oversættes til et postdistrikt"
         waitFor {postdistrikt.text() == "Værløse"}
 
-        and:
-        {
+        and: {
             vejkode.value("Mosevej")
             husnr.value("16")
         }
 
-        and:
-
+        and: "Klik på søg"
+        soegLink.click()
         /*
           // Måske kan modifiers hives ud via Webdriver configuration objektet,
           // da de varierer fra platform til platform og fra browser til browser.
           Keys.chord(Keys.CONTROL, Keys.ALT, "s");
          */
-        // Keys.chord(Keys.CONTROL, Keys.ALT, "s"); // Måske kan modifiers hives ud via Webdriver configuration objektet,
-        // da de varierer fra platform til platform og fra browser til browser.
 
-        then:
-        at ForespoergselTingbogenSide
+        then: "Vent på resultatet"
+        waitFor {at ForespoergselTingbogenResultaterSide}
 
+        and: "Forvent een ejendom"
+        ejendomme.size() == 1
 
-/*
-        and:
-        firstResultLink.text() == "Wikipedia"
+        and: "Vedrørende min ejendom"
+        ejendomme[0].vedroerende == "Ll. Værløse By, Værløse, 2fi"
 
-        when:
-        firstResultLink.click()
+        when: "Klik på Videre"
+        ejendomme[0].videreLink.click()
 
-        then:
-        waitFor { at WikipediaPage }
-*/
+        then: "Vent på betalingside"
+        waitFor {at BetalingSide}
     }
 }
