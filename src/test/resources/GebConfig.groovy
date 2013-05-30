@@ -6,7 +6,6 @@
 
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
-import org.openqa.selenium.ie.InternetExplorerDriver
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
 
@@ -32,10 +31,12 @@ environments {
 
   // kør med “./gradlew ieTest”
   // See: http://code.google.com/p/selenium/wiki/InternetExplorerDriver
+/*
   ie {
     System.setProperty('webdriver.ie.driver', "src/test/resources/drivers/win/IEDriverServer.exe")
     driver = { new InternetExplorerDriver() }
   }
+*/
 
   // kør med “./gradlew remoteTest”
   // See: http://code.google.com/p/selenium/wiki/RemoteWebDriver
