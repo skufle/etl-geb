@@ -2,7 +2,7 @@ Dette er et eksempel, der viser hvordan tinglysning.dk kunne testes på browser 
 
 Kører med GradleWrapper, så den henter selv alle afhængigheder, kræver blot en Java JDK installeret.
 
-Testen er sat op til at afviklevirke med FireFox og Chrome (lokalt) samt mod en Firefox på Windows 8 via Sauce Labs (remote browser farm i skyen).
+Testen er sat op til at afviklevirke med FireFox og Chrome (lokalt) samt mod en Internet Exlplorer på Windows 8 via Sauce Labs (remote browser farm i skyen).
 
 Konfiguration:  `build.gradle` og `src/test/resources/GebConfig.groovy` filerne.
 
@@ -11,8 +11,6 @@ Følgende kommandoer kan bruges til at launche test med specifikke browsere:
     ./gradlew chromeTest
     ./gradlew firefoxTest
     ./gradlew remoteTest
-
-Sidstnævnte afvikler mod Sauce Labs (Windows 8, Internet Explorer 10)
 
 Testene kan afvikles på samtlige understøttede browsere med:
 
