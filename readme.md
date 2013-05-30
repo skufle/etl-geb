@@ -8,9 +8,11 @@ Konfiguration:  `build.gradle` og `src/test/resources/GebConfig.groovy` filerne.
 
 Følgende kommandoer kan bruges til at launche test med specifikke browsere:
 
-    ./gradlew saucelabsTest
     ./gradlew chromeTest
     ./gradlew firefoxTest
+    ./gradlew remoteTest
+
+Sidstnævnte afvikler mod Sauce Labs (Windows 8, Internet Explorer 10)
 
 Testene kan afvikles på samtlige understøttede browsere med:
 
