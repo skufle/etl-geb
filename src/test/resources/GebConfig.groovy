@@ -48,9 +48,9 @@ environments {
 
     def url = new URL("http://$username:$accessKey@ondemand.saucelabs.com:80/wd/hub")
 
-    DesiredCapabilities capabilities = DesiredCapabilities.firefox()
-    capabilities.setCapability("version", "17")
-    capabilities.setCapability("platform", "Windows 2012")
+    DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer()
+    capabilities.setCapability("version", "10")
+    capabilities.setCapability("platform", "Windows 8")
 
 /* Deres Safari OSX hoster lidt...
     DesiredCapabilities capabilities = DesiredCapabilities.safari()
