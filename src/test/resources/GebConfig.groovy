@@ -44,7 +44,7 @@ environments {
   remote {
     def username = System.getenv("GEB_SAUCE_LABS_USER")
     assert username
-    def accessKey = System.getenv("GEB_SAUCE_LABS_ACCESS_PASSWORD")
+    def accessKey = System.getenv("GEB_SAUCE_LABS_ACCESS_KEY")
     assert accessKey
 
     def url = new URL("http://$username:$accessKey@ondemand.saucelabs.com:80/wd/hub")
