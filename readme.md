@@ -16,10 +16,10 @@ Testene kan afvikles på samtlige understøttede browsere med:
 
     ./gradlew test
     
-Hvis du ønsker at afvikle testen mod Sauce Labs kræver det en valid konto og password sat med environment variablene
+Hvis du ønsker at afvikle testen mod Sauce Labs kræver det en valid bruger og access key sat med environment variablene
 
  `GEB_SAUCE_LABS_USER=bruger`
- `GEB_SAUCE_LABS_ACCESS_PASSWORD=password`
+ `GEB_SAUCE_LABS_ACCESS_KEY=access key`
  
 Kontoen er gratis for en enkelt bruger.
 
