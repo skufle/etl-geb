@@ -1,11 +1,10 @@
 package tinglysning
 
 import geb.spock.GebReportingSpec
-import org.openqa.selenium.Keys
 
 class TinglysningDKSoegSpec extends GebReportingSpec {
 
-    def "Naviger til Forespoergsel side og fremsoeg Brians palads"() {
+    def "Naviger til Forespoergsel side og fremsoeg ejendommen Mosevej 16"() {
 
         given: "Naviger til startsiden"
         to TinglysningStartSide
