@@ -2,6 +2,10 @@
 	This is the Geb configuration file.
 	
 	See: http://www.gebish.org/manual/current/configuration.html
+
+	Afvikling af alle tests, kør:  “./gradlew test”
+
+	evt. med clean først.
 */
 
 import org.openqa.selenium.chrome.ChromeDriver
@@ -61,5 +65,3 @@ environments {
     driver = { new RemoteWebDriver(url, capabilities) }
   }
 }
-
-// Afvikling af alle tests, kør:  “./gradlew test”

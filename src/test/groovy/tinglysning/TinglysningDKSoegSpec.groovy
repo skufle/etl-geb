@@ -55,7 +55,8 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
         when: "Klik på Videre"
         ejendomme[0].videreLink.click()
 
-        then: "Vent på betalingside"
-        waitFor {at BetalingSide}
+        then: "Vent på Vis dokument"
+        waitFor {at VisdokumentSide}
+
     }
 }

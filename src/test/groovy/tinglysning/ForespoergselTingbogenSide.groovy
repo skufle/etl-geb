@@ -7,7 +7,7 @@ class ForespoergselTingbogenSide extends ForespoergselSide {
   static at = { $("h1").next().text() == "Tingbogen - forespørg i fast ejendom" }
 
   static content = {
-    //postnummer {$("form").find("input", name: "content:center:tingbogen:postnummer")} // CSS3 selector kopierbar direkte fra developer tools.
+    //postnummer {$("form").find("input", name: "content:center:tingbogen:postnummer")} // CSS3 selector kopierbar direkte fra developer tools i Firefox.
     postnummer { $("form").find("input", name: endsWith("postnummer")) }
     vejkode { $("form").find("input", name: endsWith("vejkode")) }
     husnr { $("form").find("input", name: endsWith("husnr")) }
