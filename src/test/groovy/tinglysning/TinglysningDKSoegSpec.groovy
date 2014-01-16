@@ -1,11 +1,10 @@
 package tinglysning
 
 import geb.spock.GebReportingSpec
-import org.openqa.selenium.Keys
 
 class TinglysningDKSoegSpec extends GebReportingSpec {
 
-    def "Naviger til Forespoergsel side og fremsoeg Brians palads"() {
+    def "Naviger til Forespoergsel side og fremsoeg ejendommen Mosevej 16"() {
 
         given: "Naviger til startsiden"
         to TinglysningStartSide
@@ -56,7 +55,8 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
         when: "Klik på Videre"
         ejendomme[0].videreLink.click()
 
-        then: "Vent på betalingside"
-        waitFor {at BetalingSide}
+        then: "Vent på Vis dokument"
+        waitFor {at VisdokumentSide}
+
     }
 }

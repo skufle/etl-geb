@@ -6,4 +6,4 @@ build
 *.iml
 *.iws
 out
-gradle.properties
+.idea

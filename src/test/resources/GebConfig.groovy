@@ -2,6 +2,10 @@
 	This is the Geb configuration file.
 	
 	See: http://www.gebish.org/manual/current/configuration.html
+
+	Afvikling af alle tests, kør:  “./gradlew test”
+
+	evt. med clean først.
 */
 
 import org.openqa.selenium.chrome.ChromeDriver
@@ -19,7 +23,7 @@ environments {
   // See: http://code.google.com/p/selenium/wiki/ChromeDriver
   chrome {
     System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/win/chromedriver.exe")
-    // System.setProperty("webdriver.chrome.driver", "/Applications/chromedriver2_mac32_0.8/chromedriver")
+    // System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/mac/chromedriver")
     driver = { new ChromeDriver() }
   }
 
@@ -61,5 +65,3 @@ environments {
     driver = { new RemoteWebDriver(url, capabilities) }
   }
 }
-
-// Afvikling af alle tests, kør:  “./gradlew test”
