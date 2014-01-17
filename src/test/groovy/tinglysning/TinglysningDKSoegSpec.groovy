@@ -4,9 +4,9 @@ import geb.spock.GebReportingSpec
 
 class TinglysningDKSoegSpec extends GebReportingSpec {
 
-    def "Naviger til Forespoergsel side og fremsoeg ejendommen Mosevej 16"() {
+    def "Naviger til Forespoergsel side og fremsoeg ejendommen Tvendagervej 9"() {
 
-        given: "Naviger til startsiden"
+        given: "Vi er på startsiden"
         to TinglysningStartSide
 
         expect: "Jeg er på startsiden"
@@ -20,6 +20,31 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
 
         when: "Klik på forespørg tingbogen"
         forespoergTingbogenLink.click()
+
+        then: "Jeg er på mobil sitet"
+        waitFor {at ForespoergselMobilSide}
+
+        when:
+        adressefelt = "Mosevej 16, 3500"
+
+        and:
+        soeg.click()
+
+        then: "Vent på resultatet"
+        waitFor {ejendomme.size == 1}
+
+        and: "Det er parnasset (you wish)"
+        ejendomme[0].ejendom == "Mosevej 16 3500 Værløse"
+
+        then: "Klik på ejendommen"
+        ejendomme[0].ejendomLink.click()
+
+    }
+
+
+
+
+/*
 
         then: "Jeg er på forespørg tingbogen side"
         waitFor {at ForespoergselTingbogenSide}
@@ -37,11 +62,13 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
 
         and: "Klik på søg"
         soegLink.click()
-        /*
+        */
+/*
           // Måske kan modifiers hives ud via Webdriver configuration objektet,
           // da de varierer fra platform til platform og fra browser til browser.
           Keys.chord(Keys.CONTROL, Keys.ALT, "s");
-         */
+         *//*
+
 
         then: "Vent på resultatet"
         waitFor {at ForespoergselTingbogenResultaterSide}
@@ -57,6 +84,6 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
 
         then: "Vent på Vis dokument"
         waitFor {at VisdokumentSide}
+*/
 
-    }
 }
