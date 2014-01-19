@@ -1,10 +1,16 @@
 package tinglysning
 
 import geb.spock.GebReportingSpec
+import org.openqa.selenium.Keys
+import spock.lang.Shared
+import spock.lang.Unroll
 
 class TinglysningDKSoegSpec extends GebReportingSpec {
 
-    def "Naviger til Forespoergsel side og fremsoeg ejendommen Tvendagervej 9"() {
+    //@Shared ejendommen = "Mosevej 16 3500 Værløse"
+
+    @Unroll
+    def "Naviger til Forespoergsel side og fremsoeg ejendommen #resultat"() {
 
         given: "Vi er på startsiden"
         to TinglysningStartSide
@@ -25,20 +31,36 @@ class TinglysningDKSoegSpec extends GebReportingSpec {
         waitFor {at ForespoergselMobilSide}
 
         when:
-        adressefelt = "Mosevej 16, 3500"
+        adressefelt = soegestreng
 
         and:
-        soeg.click()
+        adressefelt << Keys.chord(Keys.ENTER) // eller soeg.click()
+
 
         then: "Vent på resultatet"
-        waitFor {ejendomme.size == 1}
+        waitFor {ejendomme.size == antalResultater}
 
-        and: "Det er parnasset (you wish)"
-        ejendomme[0].ejendom == "Mosevej 16 3500 Værløse"
+        and: "Det er parnasset"
+        waitFor {ejendomme[0].ejendom == resultat}
 
-        then: "Klik på ejendommen"
+        when: "Klik på ejendommen"
         ejendomme[0].ejendomLink.click()
 
+        then: "Vi er på resultat siden"
+        waitFor {at ForespoergselMobilResultatSide }
+
+        and: "Der er data..."
+        waitFor {stamoplysninger.data.present}
+
+        and: "Det er parnasset"
+          assert stamoplysninger.overskrift.text() == "Stamoplysninger"
+          assert stamoplysninger.data != null
+          assert stamoplysninger.ejendomstype != null
+          assert "Parcel" == stamoplysninger.ejendomstype.text()
+
+        where:
+        soegestreng || antalResultater || resultat
+        "Mosevej 16 3500" | 1 | "Mosevej 16 3500 Værløse"
     }
 
 

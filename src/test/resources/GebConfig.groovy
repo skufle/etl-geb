@@ -14,7 +14,7 @@ import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
 
 waiting {
-  timeout = 5
+  timeout = 10
 }
 
 environments {
