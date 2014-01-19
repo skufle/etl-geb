@@ -9,9 +9,11 @@ class TinglysningDKSoegFailsSpec extends GebReportingSpec {
     @Unroll
     def "Naviger til startsiden"() {
 
+/*
         given: "Vi er på mobil startsiden"
          waitFor {at ForespoergselMobilSide}
 
+*/
 
     }
 }
